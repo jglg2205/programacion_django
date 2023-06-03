@@ -1,0 +1,63 @@
+{% extends "layouts/main.html"%}
+{% block content %}
+{% load static %}
+<h1 class="text-danger">BUSQUEDA</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form method="GET" action="">
+                <div class="form-group my-4">
+                    <label>BUSCAR:</label>
+                    <input type="text" name="buscar" placeholder="Buscar..">
+                </div>
+                <div class="form-group my-4">
+                    <button class="btn btn-dark" type="submit">Buscar</button>
+                </div>
+            </form>
+            <p>En esta seccion podras vizualizar de forma rapida el contenido que te ofrecemos, sin embargo si deseas poder dejarnos tu opinion te invitamos a los siguientes enlaces:
+            </p>
+            <ul>
+                <li><a href="/novelas">Novelas</a></li>
+                <li><a href="/educacionF">Educacion Financiera</a></li>
+                <li><a href="/superacionP">Superacion Personal</a></li>
+            </ul>
+            
+            <div class="row">
+                <div class="col-6 my-4">
+                    <img src="{% static 'images/reflexion.jpg' %}" width="300"  height="300" alt="imagen">
+                </div>
+               <hr>
+               <h2>Libros Mejor Valorados:</h2>
+               {%for v in context %}
+               <h3>{{v.id_libroV.titulo_libro}}</h3>
+               {% endfor %}
+            </div>
+             <div class="row">
+                <div class="col-6 my-4">
+                    <img src="{% static 'images/libro.jpg' %}" width="300" height="300" alt="imagen">
+                </div>
+                
+             </div>   
+                
+        </div>
+
+        <div class="col-6">
+            <h1 class="text-danger">RESULTADOS:</h1>
+            {% for d in datos %}
+            <div class="card align-items-center" style="Width: 30rem;">
+                <div class="card-body">
+                    <h2>{{d.titulo_libro}}</h2>
+                    <img src="{{d.portada.url}}" width="200" height="200">
+                    <p>{{d.descripcion_libro}}</p>
+                    <a class="btn btn-dark" href="{{d.ruta}}" target="_blank">Leer</a>
+                </div>
+            </div>
+           
+             
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>    
+
+{% endblock%}

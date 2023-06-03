@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+{% block content%}
+<h1 class="text-danger text-center">Registro de Usuarios</h1>
+<form method= 'POST' action="">
+    {% csrf_token %}
+    <div class="form-group my-3">
+        <label>Usuario</label>
+        <input type="text" class="form-control my-3" name="username" placeholder="Usuario">
+    </div>
+    <div class="form-group my-3">
+        <label>Email</label>
+        <input type="email" class="form-control my-3" name="email" placeholder="email">
+    </div>
+    <div class="form-group my-3">
+        <label>Nombre</label>
+        <input type="text" class="form-control my-3" name="name" placeholder="Nombre">
+    </div>
+    <div class="form-group my-3">
+        <label>Apellido</label>
+        <input type="text" class="form-control my-3" name="last_name" placeholder="Apellido">
+    </div>
+    <div class="form-group my-3">
+        <label>Contraseña</label>
+        <input type="password" class="form-control my-3" name="password" placeholder="Contraseña">
+    </div>
+    <div class="form-group my-3">
+        <label>Confirmar Contraseña</label>
+        <input type="password" class="form-control my-3" name="confirm_password" placeholder="Confirmar Contraseña">
+    </div>
+    <button class="btn btn-dark" type="submit">Registrarse</button>
+</form>
+
+{% endblock %}

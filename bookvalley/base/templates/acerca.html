@@ -1,0 +1,34 @@
+{% extends "layouts/main.html"%}
+{% load static %}
+{%block content%}
+<div class="conatiner">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-danger">Acerca de:</h1>
+            <p style="text-align: justify;">Bookvalley fue desarrollada con fines educativos, cuya finalidad es fomentar la lectura y el saber acerca de diversos temas que permitan a nuestros usuarios pasar horas de entretenimieno y crecimiento personal, este iniciativa viene inspirada en la plataforma nextflix pero con una tematica diferente, tratando de ofrecer el mejor contenido </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-danger">Agradecimientos:</h2>
+            <p style="text-align: justify;">Mi mayor gratitud para los profes y comunidad de Lumetrio en general, ya que vengo siguiendo sus cursos desde diciembre y en un principio aunque sabia que la meta era lograr hacer sitios funcionales no me imagine que podia hacerse en forma tan divertida, ya que gracias a sus videos donde siempre habia un buen sentido del humor y en ocasiones las cosas no salian a la primera, permitieron darme cuenta que todo se puede solucionar y siempre se puede alcanzar el objetivo. MUCHAS GRACIAS</p>
+        </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-danger">Estos son los libros mejor valorados por nuestros usuarios:</h2>
+                <div class="card align-items-center mt-3">
+                    <div class="card-body bg-dark" style='width: 25rem;'>
+                        {% for v in valor %}
+                        <h3 class="text-white mt-3">{{v.id_libroV.titulo_libro}}</h3>
+                        <img  class="mx-1" src="{{v.id_libroV.portada.url}}" width="300" height="300">
+                        {% endfor %}
+                    </div>
+                   
+                </div>      
+        </div>
+    </div>
+    <h5 class="text-center my-4 text-danger">DESARROLLADO POR JOSE LOPEZ</h5>
+</div>
+
+
+{% endblock%}

@@ -1,0 +1,38 @@
+{% extends "layouts/main.html"%}
+{% block content %}
+<h1 class="text-center text-danger">EDITAR COMENTARIOS</h1>
+<div class="col-4">
+    <form method= 'POST' action='/editarComentario/'>
+        {% csrf_token %}
+        <div class="form-group my-4">
+
+            <input type="hidden" name="id_libroV" value="{{publicacion.id_libroV.id}}">
+            
+        </div>
+        <div class="form-group my-4">
+
+            <input type="hidden" name="id" value="{{publicacion.id}}">
+            
+        </div>
+        <div class="form-group my-4">
+            <label>Comentario</label>
+            <textarea type="text" class="form-control my-4" name="comentario" >{{publicacion.comentario}}</textarea>
+        </div>
+
+        <div class="form-group my-4">
+            <label>Valoracion</label>
+            <select class="form-control" name="puntos">
+
+                <option value='1'>Aburrido</option>
+                <option value='2'>No es muy interesante</option>
+                <option value='3'>Es algo entretenido</option>
+                <option value='4'>Es un buen libro</option>
+                <option value='5'>Excelente libro</option>
+            </select>
+        </div>
+        <div class="form-group my-4">
+            <button class="btn btn-dark" type="submit">Editar</button>
+        </div>
+    </form>
+
+{% endblock %}

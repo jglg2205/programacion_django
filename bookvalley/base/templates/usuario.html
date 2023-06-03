@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+    <h1 class="text-danger">Hola, {{user.username}}</h1>
+    <hr>
+    <p>Tus publicaciones y Libros leidos:</p>
+    <hr>
+
+    {% for c in valoracion %}
+    {% if user.id == c.user.id %}
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3>{{c.id_libroV}}</h3>
+                    <img class="mt-3" src="{{c.id_libroV.portada.url}}" width="200" height="200">
+                </div>
+                
+                <div class="col-4">
+                    <h4 class="mt-3">Comentarios:</h4>
+                    <p class="mt-3">{{c.comentario}}</p>
+                </div>
+                <div class="col-4">
+                    <h4 class="mt-3">Valoracion:</h4>
+                    <span>{{c.puntos}} Estrellas!</span>
+                </div>
+                
+            </div>
+        
+            <div class="row my-4">
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+                    
+                </div>
+                <div class="col-4">
+                    <a href="edicion/{{c.id}}" class="btn btn-dark">Editar</a>
+                    <a href="eliminar/{{c.id}}" class="btn btn-dark">Eliminar</a> 
+                </div>
+            </div>
+        
+        </div>
+        <hr>
+    {% endif%}
+    {% endfor %}
+{% endblock %}

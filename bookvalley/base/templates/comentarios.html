@@ -1,0 +1,41 @@
+{% extends "layouts/main.html"%}
+{% block content %}
+<h1 class="text-center text-danger">Comunidad</h1>
+<hr class="border-3"> 
+
+<div class="container bg-light">
+   
+    
+    <div class="row">
+        <div class="col-4">
+            <h3>Consejo:</h3>
+            <p>Si no estas muy seguro por cual libro empezar a leer, acá en nuestra grandiosa comunidad de Bookvalley podras encontrar las mejores referencias para empezar tu travesia</p>
+            <p>Siempre que quieras empezar a leer un libro debes pensar:</p>
+            <lu>
+                <li>¿Que es lo que mas me gusta?</li>
+                <li>¿Cuales son mis intencones al querer leer el libro?</li>
+                <li>Pensar en leer como un momento de relajacion donde nutres tu mente y tu espiritu</li>
+            </lu>
+        </div>
+        <div class="col-4 card align-items-center bg-dark" style="width: 30rem;">
+            <div class="card-body">
+                {% for c in comentario %}
+                <h2 class="text-white">{{c.id_libroU.titulo_libro}}</h2>
+                <img src="{{c.id_libroU.portada.url}}" alt="imagen" width="200" height="200">
+                
+                <h4 class="text-white">{{c.id_userL.username}} Ha publicado acerca del libro:</h4>
+                <p class="my-4 text-white">{{c.id_valoracionlu.comentario}}</p>
+                <span class="my-4 text-white"> <h6 class="text-white">Valoracion</h6> {{c.id_valoracionlu.puntos}} Estrellas</span>
+                <p class="text-white">{{c.id_valoracionlu.updated_valoracion}}</p>
+                {% endfor %} 
+            </div>
+            
+        </div>
+
+    </div>
+    
+    
+    
+</div>
+
+{% endblock%}

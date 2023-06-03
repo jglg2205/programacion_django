@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+{% block content %}
+<h1 class="text-danger text-center mb-3">Novelas</h1>
+<hr class="border-3">
+{% for l in libros_N %}
+    
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            
+            <div class="col-4">
+                <h3 class="mb-3">{{l.id_libroG}}</h3>
+                <img src="{{l.id_libroG.portada.url}}" width="200" height="200">
+                
+            </div>
+
+            <div class="col-4 my-5">
+                <h4>Sipnosis</h4>
+                <p>{{l.id_libroG.descripcion_libro}}</p>
+            </div>
+
+            <div class="col-4">
+                <form method= 'POST' action="">
+                    {% csrf_token %}
+                    <div class="form-group my-4">
+                        <input type="hidden" name="id_libroV" value="{{l.id_libroG.id}}">
+                    </div>
+                    <div class="form-group my-4">
+                        <label>Comentario</label>
+                        <textarea type="text" class="form-control my-4" name="comentario" placeholder="Deja tu cometario"></textarea>
+                    </div>
+
+                    <div class="form-group my-4">
+                        <label>Valoracion</label>
+                        <select class="form-control" name="puntos">
+                            <option value='1'>Aburrido</option>
+                            <option value='2'>No es muy interesante</option>
+                            <option value='3'>Es algo entretenido</option>
+                            <option value='4'>Es un buen libro</option>
+                            <option value='5'>Excelente libro</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group my-4">
+                        <a href="{{l.id_libroG.ruta}}" target="_blank" class="btn btn-dark">Leer</a>
+                    </div>
+                    <div class="form-group my-4">
+                        <button class="btn btn-dark" type="submit">Comentar</button>
+                    </div>
+                </form>
+
+               
+                
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+{% endfor %}
+{% endblock %}
