@@ -125,12 +125,13 @@ def editarComentario(request):
    id_libroV = request.POST.get('id_libroV')
    libro =Libro.objects.get(id=id_libroV)
    publicacion = Valoracion.objects.get(id=id)
-   publicacion.comentario = comentario
-   publicacion.puntos = puntos
-   publicacion.user = user
-   publicacion.id_libroV = libro
-   publicacion.save()
-   messages.success(request, 'Comentario editado con exito')
+   if(user== publicacion.user):
+    publicacion.comentario = comentario
+    publicacion.puntos = puntos
+    publicacion.user = user
+    publicacion.id_libroV = libro
+    publicacion.save()
+    messages.success(request, 'Comentario editado con exito')
    return redirect('/usuario')
 
 def busqueda(request):
